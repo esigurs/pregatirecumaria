@@ -20,10 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Dark mode toggle
   const darkModeToggleButtons = document.querySelectorAll('.dark-mode-toggle');
   const body = document.body;
+  const header = document.querySelector('.header');
 
   darkModeToggleButtons.forEach(button => {
     button.addEventListener('click', () => {
       body.classList.toggle('dark-mode');
+      header.classList.toggle('dark-mode');
     });
   });
 
