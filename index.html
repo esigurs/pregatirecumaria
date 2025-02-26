@@ -344,6 +344,10 @@
             .mobile-menu-button {
                 display: block;
             }
+
+            .dark-mode-toggle.desktop-only {
+                display: none; /* Hide toggle in main header for mobile */
+            }
             
             .hero h1 {
                 font-size: 2.5rem;
@@ -432,7 +436,7 @@
                 <a href="#reviews" class="nav-link">Testimoniale</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
-            <button class="dark-mode-toggle">🌙</button>
+            <button class="dark-mode-toggle desktop-only">🌙</button>
             <button class="mobile-menu-button">☰</button>
             <div class="mobile-menu">
                 <a href="#home">Acasă</a>
