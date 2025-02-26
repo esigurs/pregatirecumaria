@@ -1,0 +1,14 @@
+{
+  "name": "pregatire-cu-maria",
+  "version": "1.0.0",
+  "description": "Website for chemistry tutoring",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "vite": "^4.0.0"
+  },
+  "devDependencies": {}
+}

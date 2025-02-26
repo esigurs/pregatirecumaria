@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditații Chimie Clasa a XII-a | Maria</title>
+    <style>
+        /* Minimal CSS Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        /* Design Variables */
+        :root {
+            --primary: #6C63FF;
+            --secondary: #FF6584;
+            --accent: #3F3D56;
+            --light: #F9F9F9;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--accent);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 5% 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(45deg, #6C63FF 0%, #3F3D56 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 2rem;
+            transition: var(--transition);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 101, 132, 0.4);
+        }
+
+        /* Chemistry Animation Styles */
+        .chemistry-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            animation: float 8s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) scale(0.8);
+                opacity: 0;
+            }
+            25% {
+                transform: translateY(-25vh) translateX(10vw) scale(1.2);
+            }
+            50% {
+                transform: translateY(-50vh) translateX(-5vw) scale(0.9);
+                opacity: 0.8;
+            }
+            75% {
+                transform: translateY(-75vh) translateX(8vw) scale(1.1);
+            }
+            100% {
+                transform: translateY(-100vh) translateX(0) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        /* Molecular bonds animation */
+        .molecular-bonds {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .bond {
+            position: absolute;
+            background: rgba(255,101,132,0.2);
+            transform-origin: left center;
+            animation: bondForm 4s infinite ease-in-out;
+        }
+
+        @keyframes bondForm {
+            0% { transform: scaleX(0); }
+            50% { transform: scaleX(1); }
+            100% { transform: scaleX(0); }
+        }
+
+        /* Molecule shapes */
+        .molecule {
+            position: absolute;
+            opacity: 0.15;
+            animation: moleculeFloat 15s infinite linear;
+        }
+
+        @keyframes moleculeFloat {
+            0% { 
+                transform: translateY(100%) translateX(-50px) rotate(0deg); 
+                opacity: 0;
+            }
+            10% { opacity: 0.15; }
+            90% { opacity: 0.15; }
+            100% { 
+                transform: translateY(-20%) translateX(50px) rotate(360deg); 
+                opacity: 0;
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        /* Reviews Section */
+        .reviews-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(108, 99, 255, 0.1);
+        }
+
+        .review-quote {
+            font-size: 4rem;
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            color: rgba(108, 99, 255, 0.1);
+        }
+
+        .review-content {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .review-info h4 {
+            margin-bottom: 0.2rem;
+        }
+
+        .review-info p {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .review-stars {
+            color: gold;
+            margin-top: 0.5rem;
+        }
+
+        /* Contact Form */
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid, .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <h1>Maria 🧪</h1>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Acasă</a>
+                <a href="#about" class="nav-link">Despre Mine</a>
+                <a href="#services" class="nav-link">Program</a>
+                <a href="#reviews" class="nav-link">Testimoniale</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="chemistry-particles">
+            <div class="particle" style="width: 8px; height: 8px; left: 10%; animation-delay: 0s;"></div>
+            <div class="particle" style="width: 12px; height: 12px; left: 30%; animation-delay: 1.5s;"></div>
+            <div class="particle" style="width: 15px; height: 15px; left: 50%; animation-delay: 0.8s;"></div>
+            <div class="particle" style="width: 10px; height: 10px; left: 70%; animation-delay: 2.2s;"></div>
+            <div class="particle" style="width: 6px; height: 6px; left: 85%; animation-delay: 1.1s;"></div>
+            <div class="particle" style="width: 9px; height: 9px; left: 15%; animation-delay: 3.1s;"></div>
+            <div class="particle" style="width: 14px; height: 14px; left: 40%; animation-delay: 2.5s;"></div>
+            <div class="particle" style="width: 7px; height: 7px; left: 65%; animation-delay: 0.3s;"></div>
+            <div class="particle" style="width: 11px; height: 11px; left: 80%; animation-delay: 1.8s;"></div>
+            <div class="particle" style="width: 13px; height: 13px; left: 25%; animation-delay: 2.7s;"></div>
+            <div class="particle" style="width: 10px; height: 10px; left: 55%; animation-delay: 3.5s;"></div>
+            <div class="particle" style="width: 8px; height: 8px; left: 75%; animation-delay: 1.3s;"></div>
+        </div>
+        
+        <div class="molecular-bonds">
+            <div class="bond" style="top: 20%; left: 15%; width: 80px; height: 2px; animation-delay: 0.5s;"></div>
+            <div class="bond" style="top: 45%; left: 60%; width: 120px; height: 2px; transform: rotate(45deg); animation-delay: 2s;"></div>
+            <div class="bond" style="top: 70%; left: 25%; width: 100px; height: 2px; transform: rotate(-30deg); animation-delay: 1.2s;"></div>
+            <div class="bond" style="top: 30%; left: 70%; width: 90px; height: 2px; transform: rotate(15deg); animation-delay: 3s;"></div>
+            <div class="bond" style="top: 60%; left: 40%; width: 110px; height: 2px; transform: rotate(-60deg); animation-delay: 0.8s;"></div>
+        </div>
+        
+        <svg class="molecule" style="width: 120px; height: 120px; left: 20%; top: 30%; animation-delay: 1s;" viewBox="0 0 100 100">
+            <circle cx="50" cy="30" r="10" fill="white"/>
+            <circle cx="30" cy="70" r="10" fill="white"/>
+            <circle cx="70" cy="70" r="10" fill="white"/>
+            <line x1="50" y1="30" x2="30" y2="70" stroke="white" stroke-width="2"/>
+            <line x1="50" y1="30" x2="70" y2="70" stroke="white" stroke-width="2"/>
+            <line x1="30" y1="70" x2="70" y2="70" stroke="white" stroke-width="2"/>
+        </svg>
+        
+        <svg class="molecule" style="width: 100px; height: 100px; right: 15%; top: 60%; animation-delay: 3s;" viewBox="0 0 100 100">
+            <circle cx="50" cy="20" r="8" fill="white"/>
+            <circle cx="20" cy="50" r="8" fill="white"/>
+            <circle cx="50" cy="80" r="8" fill="white"/>
+            <circle cx="80" cy="50" r="8" fill="white"/>
+            <line x1="50" y1="20" x2="20" y2="50" stroke="white" stroke-width="2"/>
+            <line x1="20" y1="50" x2="50" y2="80" stroke="white" stroke-width="2"/>
+            <line x1="50" y1="80" x2="80" y2="50" stroke="white" stroke-width="2"/>
+            <line x1="80" y1="50" x2="50" y2="20" stroke="white" stroke-width="2"/>
+        </svg>
+
+        <div class="hero-content">
+            <h1>Pregătire intensivă pentru Bacalaureatul la Chimie</h1>
+            <p>Transform dificultățile în succes prin lecții interactive și personalizate!</p>
+            <a href="#contact" class="cta-button">Programează prima lecție gratuită</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title">Despre Mine</h2>
+        <div class="about-content">
+            <p>👩🏫 Profesor certificat cu 10+ ani experiență în pregătirea pentru Bacalaureat</p>
+            <p>🎓 Absolventă a Facultății de Chimie - Universitatea București</p>
+            <p>🏆 Elevii mei au obținut medii de peste 9.20 în ultimii 3 ani</p>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2 class="section-title">Program de Lucru</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>📘 Lecții Individuale</h3>
+                <p>Program flexibil (L-V: 15:00-20:00)</p>
+                <p>Ședințe de 1.5 ore</p>
+            </div>
+            <div class="service-card">
+                <h3>👥 Grupuri Reduse</h3>
+                <p>Maxim 5 elevi/grup</p>
+                <p>Sâmbătă: 10:00-13:00</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <h2 class="section-title">Testimoniale</h2>
+        <div class="reviews-container">
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-quote">“</div>
+                    <div class="review-content">
+                        Cu ajutorul doamnei Maria am reușit să înțeleg chimia organică în doar 2 luni. Explicațiile clare și exemplele practice fac totul mult mai ușor!
+                    </div>
+                    <div class="review-author">
+                        <div class="review-avatar">AI</div>
+                        <div class="review-info">
+                            <h4>Ana Ionescu</h4>
+                            <p>Elevă clasa a XII-a</p>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-quote">“</div>
+                    <div class="review-content">
+                        Cea mai bună profesoară! Metodele moderne de predare și suportul permanent mi-au dat încrederea necesară pentru examen.
+                    </div>
+                    <div class="review-author">
+                        <div class="review-avatar">MP</div>
+                        <div class="review-info">
+                            <h4>Mihai Popescu</h4>
+                            <p>Elev clasa a XII-a</p>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-quote">“</div>
+                    <div class="review-content">
+                        Recomand cu căldură! Materialele structurate și testele periodice m-au ajutat să urc cu 2 puncte media la chimie.
+                    </div>
+                    <div class="review-author">
+                        <div class="review-avatar">EC</div>
+                        <div class="review-info">
+                            <h4>Elena Ciobanu</h4>
+                            <p>Elevă clasa a XII-a</p>
+                            <div class="review-stars">★★★★☆</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Contact Rapid</h2>
+        <div class="contact-grid">
+            <div class="service-card">
+                <a href="mailto:maria@example.com">
+                    <h3>📧 Email</h3>
+                    <p>maria@example.com</p>
+                </a>
+            </div>
+            <div class="service-card">
+                <a href="tel:+40712345678">
+                    <h3>📞 Telefon</h3>
+                    <p>+40 712 345 678</p>
+                </a>
+            </div>
+            <div class="service-card">
+                <a href="https://wa.me/40712345678">
+                    <h3>📱 WhatsApp</h3>
+                    <p>+40 712 345 678</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="/script.js"></script>
+</body>
+</html>
