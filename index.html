@@ -15,14 +15,23 @@
             --secondary: #FF6584;
             --accent: #3F3D56;
             --light: #F9F9F9;
+            --dark: #222;
             --transition: all 0.3s ease;
+            --bg: #fff;
+            --text: #333;
         }
 
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
             line-height: 1.6;
-            color: var(--accent);
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: var(--text);
+            background: var(--bg);
+            transition: var(--transition);
+        }
+
+        body.dark-mode {
+            --bg: #121212;
+            --text: #eee;
         }
 
         /* Header Styles */
@@ -34,12 +43,21 @@
             backdrop-filter: blur(10px);
             z-index: 1000;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .header.dark-mode {
+            background: rgba(34, 34, 34, 0.95);
         }
 
         .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
         }
 
         .nav-links {
@@ -48,7 +66,7 @@
         }
 
         .nav-link {
-            color: var(--accent);
+            color: var(--text);
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
@@ -57,6 +75,20 @@
         .nav-link:hover {
             color: var(--primary);
             transform: translateY(-2px);
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .dark-mode-toggle:hover {
+            color: var(--primary);
         }
 
         /* Hero Section */
@@ -201,7 +233,7 @@
         }
 
         .service-card {
-            background: white;
+            background: var(--bg);
             padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
@@ -232,7 +264,7 @@
         }
 
         .review-card {
-            background: white;
+            background: var(--bg);
             padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
@@ -306,6 +338,10 @@
             .nav-links {
                 display: none;
             }
+
+            .mobile-menu-button {
+                display: block;
+            }
             
             .hero h1 {
                 font-size: 2.5rem;
@@ -326,6 +362,61 @@
             gap: 2rem;
             margin-top: 2rem;
         }
+
+        /* Mobile Menu Button */
+        .mobile-menu-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text);
+            display: none;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-button:hover {
+            color: var(--primary);
+        }
+
+        /* Mobile Menu Dropdown */
+        .mobile-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--bg);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            padding: 0.5rem 0;
+            width: 150px;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a,
+        .mobile-menu button {
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            color: var(--text);
+            transition: var(--transition);
+            border: none;
+            background: none;
+            text-align: left;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu button:hover {
+            background-color: #f0f0f0;
+            color: var(--primary);
+        }
     </style>
 </head>
 <body>
@@ -338,6 +429,16 @@
                 <a href="#services" class="nav-link">Program</a>
                 <a href="#reviews" class="nav-link">Testimoniale</a>
                 <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <button class="dark-mode-toggle">🌙</button>
+            <button class="mobile-menu-button">☰</button>
+            <div class="mobile-menu">
+                <a href="#home">Acasă</a>
+                <a href="#about">Despre Mine</a>
+                <a href="#services">Program</a>
+                <a href="#reviews">Testimoniale</a>
+                <a href="#contact">Contact</a>
+                <button class="dark-mode-toggle">🌙</button>
             </div>
         </nav>
     </header>
@@ -396,7 +497,7 @@
     <section id="about">
         <h2 class="section-title">Despre Mine</h2>
         <div class="about-content">
-            <p>👩🏫 Profesor certificat cu 10+ ani experiență în pregătirea pentru Bacalaureat</p>
+            <p>👩🏫 10+ ani experiență în pregătirea pentru Bacalaureat</p>
             <p>🎓 Absolventă a Facultății de Chimie - Universitatea București</p>
             <p>🏆 Elevii mei au obținut medii de peste 9.20 în ultimii 3 ani</p>
         </div>
